@@ -1,6 +1,5 @@
 class TICTACTOE 
 
-
     WIN_COMBINATIONS = [ 
     [0,1,2], # top_row 
     [3,4,5], # middle_row 
