@@ -117,7 +117,7 @@ class TICTACTOE
 
         if position_1 == 'X' && position_2 == 'X' && position_3 == 'X'
             return win_combination
-        elseif position_1 == 'O' && position_2 == 'O' && position_3 == 'O'
+        elsif  position_1 == 'O' && position_2 == 'O' && position_3 == 'O'
             return win_combination
         end
     }
@@ -148,7 +148,6 @@ class TICTACTOE
     def winner
         array = []
         array = won?
-        puts array.inspect
         if array == false
             return nil
         else
