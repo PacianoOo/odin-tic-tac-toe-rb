@@ -16,8 +16,7 @@ class TICTACTOE
       @board = [" "," "," "," "," "," "," "," "," "]
     end
 
-    #method to print the board
-
+    #method to print the board/ print board pattern everytime after a turn
     def print_empty
         puts row = [" 1 " "|" " 2 " "|" " 3 "]
         puts separator = "-----------"
@@ -25,6 +24,7 @@ class TICTACTOE
         puts separator
         puts row = [" 7 " "|" " 8 " "|" " 9 "]
     end
+    #print board
     def print_board
         puts row = ["#{@board[0]} " "|" " #{@board[1]} " "|" " #{@board[2]}  "]
         puts separator = "-----------"
@@ -33,9 +33,9 @@ class TICTACTOE
         puts row = ["#{@board[6]} " "|" " #{@board[7]} " "|" " #{@board[8]}  "]
     end
 
+    #welcome message
     def welcome()
         puts "Welcome to TIC-TAC-TOE!"
-
     end
 
     #converts a user input to an index of an integer
@@ -45,27 +45,19 @@ class TICTACTOE
     
     #takes a users index and board the places X or O to the board
     def move(index, player_symbol)
-    
         @board[index] = player_symbol
     end
 
     def position_taken?(index)
         if (@board[index] == " ") || (@board[index] == nil ) || (@board[index] == "")
             return false
-    
-        else
-            return true 
-
         end
     end
     #checking if the input is valid and if the position is taken
     def valid_move?(index)
         if (index.between?(0,8)) == true && (position_taken?(index)) == false
             return true
-        else
-            return false
         end
-
     end
 
     def turn_count
@@ -78,13 +70,12 @@ class TICTACTOE
         counter
     end
 
-
     def turn
         print_empty
         puts "Please select tiles from 1 - 9"
         input = gets.strip 
         index = user_input_position(input)
-        if valid_move?(index) == true
+        if valid_move?(index)
             player_symbol = player
             move(index, player_symbol)
             print_board
@@ -96,11 +87,8 @@ class TICTACTOE
     def player
         if turn_count % 2 == 0
             return "X"
-
         else
             return "O"
-        
-
         end
     end
 
@@ -143,10 +131,9 @@ class TICTACTOE
 
     def draw?
         if !won? && full?
-        return true
+            return true
         else
             return false
-
         end
     end
 
@@ -156,12 +143,12 @@ class TICTACTOE
         else
             return false
         end
-
     end
 
     def winner
         array = []
         array = won?
+        puts array.inspect
         if array == false
             return nil
         else
@@ -172,9 +159,6 @@ class TICTACTOE
             end
         end
     end
-
-
-
 end
 
 game = TICTACTOE.new 
